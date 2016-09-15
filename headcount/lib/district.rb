@@ -1,5 +1,5 @@
 class District
-attr_reader :name
+attr_accessor :name
   def initialize(data_hash)
     @name = data_hash[:name]
   end

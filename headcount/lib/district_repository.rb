@@ -1,11 +1,8 @@
 require 'csv'
 require_relative 'district'
 
-
-
 class DistrictRepository
-  attr_reader :contents, :student_repository, :districts
-  # include Load
+  attr_accessor :contents, :student_repository, :districts
 
   def initialize
     @districts = {}
@@ -13,8 +10,7 @@ class DistrictRepository
 
   def load_data(file_hash)
     filename = file_hash[:enrollment][:kindergarten]
-    contents = CSV.open filename, headers: true,
-        header_converters: :symbol
+    contents = CSV.open filename, headers: true, header_converters: :symbol
     contents.each do |row|
       if find_by_name(row[:location]).nil?
         @districts[row[:location]] = District.new({name: row[:location] })
@@ -28,8 +24,9 @@ class DistrictRepository
    end
   #
   def find_all_matching(input)
-    a = @districts.select do |name, district|
+    @districts.select do |name, district|
       district if name.include?(input)
     end.values
+    binding.pry
   end
 end

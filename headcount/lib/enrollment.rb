@@ -3,11 +3,14 @@ attr_reader :name, :kindergarten_participation_by_year
   def initialize(data_hash)
     @name = data_hash[:name]
     @kindergarten_participation_by_year = clean_year(data_hash[:kindergarten_participation])
-    # binding.pry
   end
 
   def kindergarten_participation_in_year(year)
-    @kindergarten_participation_by_year[year]
+    if @kindergarten_participation_by_year.key?(year)
+      @kindergarten_participation_by_year[year]
+    else
+      nil
+    end
   end
 
   def clean_year(years)
