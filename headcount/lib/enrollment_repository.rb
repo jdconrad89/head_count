@@ -1,5 +1,6 @@
+require 'csv'
+require_relative 'enrollment'
 class EnrollmentRepository
-  include Load
 
   def initialize
     @enrollments = {}
@@ -13,6 +14,11 @@ class EnrollmentRepository
         @enrollments[row[:location]] = Enrollment.new({name: row[:location] })
       end
     end
+   end
+   def enrollment
+     
+     @enrollments
+
    end
 
   def find_by_name(input)
