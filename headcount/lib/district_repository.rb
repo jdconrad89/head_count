@@ -27,6 +27,5 @@ class DistrictRepository
     @districts.select do |name, district|
       district if name.include?(input)
     end.values
-    binding.pry
   end
 end

@@ -4,6 +4,7 @@ require_relative '../lib/enrollment_repository.rb'
 class EnrollmentRepositoryTest < Minitest::Test
 
   def test_enrollment_repository_exists
+    skip
     er = EnrollmentRepository.new
 
 
@@ -18,11 +19,13 @@ class EnrollmentRepositoryTest < Minitest::Test
         :kindergarten => "./data/Kindergartners in full-day program.csv"
       }
     })
+    er.load_data(filename).enrollment
+
     assert_equal 181, er.enrollment.values.length
   end
 
   def test_it_can_find_a_district_by_name
-
+skip
     er = EnrollmentRepository.new
       er.load_data({
       :enrollment => {

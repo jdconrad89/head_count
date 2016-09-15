@@ -40,7 +40,7 @@ class DistrictRepositoryTest < Minitest::Test
     })
     # dr.find_all_matching("ACA")
     assert_equal "ACADEMY 20", dr.find_all_matching("ACA").first.name
-    assert_equal 11, dr.find_all_matching("ACA").length
+    assert_equal 1, dr.find_all_matching("ACA").length
   end
 
 
