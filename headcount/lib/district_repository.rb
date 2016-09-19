@@ -1,11 +1,14 @@
 require 'csv'
 require_relative 'district'
+require_relative 'enrollment_repository'
 
 class DistrictRepository
   attr_accessor :contents, :student_repository, :districts
+  attr_reader :enrollments
 
   def initialize
     @districts = {}
+    @enrollments = EnrollmentRepository.new
   end
 
   def load_data(file_hash)
@@ -16,6 +19,15 @@ class DistrictRepository
         @districts[row[:location]] = District.new({name: row[:location] })
       end
     end
+    @enrollments.load_data(file_hash)
+    assign_matches
+  end
+
+  def assign_matches
+    districts.each do |name, district|
+      district.enrollment = enrollments.find_by_name(name)
+    end
+
   end
 
   def find_by_name(input)

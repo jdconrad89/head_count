@@ -1,8 +1,7 @@
 class District
-attr_accessor :name, :kindergarten_participation
+  attr_accessor :name, :kindergarten_participation, :enrollment
   def initialize(data_hash)
     @name = data_hash[:name]
-    @kindergarten_participation = data_hash[:kindergarten_participation]
+    @enrollment = nil
   end
-
 end
