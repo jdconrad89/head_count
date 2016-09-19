@@ -20,6 +20,7 @@ class EnrollmentRepository
 
   def find_by_name(input)
     @enrollments[input]
+
   end
 
 end

@@ -28,8 +28,19 @@ class DistrictRepositoryTest < Minitest::Test
       }
     })
     district = dr.find_by_name("ACADEMY 20")
-        assert_equal "ACADEMY 20", district.name
+    assert_equal "ACADEMY 20", district.name
   end
+  # def test_can_read_rows_of_student_class
+  #   skip
+  #   student = Student.new(:location => "Colorado",:score => "Math",
+  #     :timeframe => "2008", :dataformat => "Percent", :data => "0.697")
+  #
+  #   assert_equal student.location , "Colorado"
+  #   assert_equal student.score , "Math"
+  #   assert_equal student.timeframe , "2008"
+  #   assert_equal student.dataformat , "Percent"
+  #   assert_equal student.data , "0.697"
+  # end
 
   def test_it_can_find_all_matching
     dr = DistrictRepository.new
@@ -38,9 +49,9 @@ class DistrictRepositoryTest < Minitest::Test
         :kindergarten => "./data/Kindergartners in full-day program.csv"
       }
     })
-    # dr.find_all_matching("ACA")
-    assert_equal "ACADEMY 20", dr.find_all_matching("ACA").first.name
-    assert_equal 1, dr.find_all_matching("ACA").length
+    dr.find_all_matching("ACA")
+
+    assert_equal "ACADEMY 20", dr.find_all_matching("ACA")
   end
 
 
