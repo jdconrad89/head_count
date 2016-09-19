@@ -24,6 +24,3 @@ class EnrollmentRepository
   def find_by_name(input)
     @enrollments[input]
     # binding.pry
-  end
-
-end

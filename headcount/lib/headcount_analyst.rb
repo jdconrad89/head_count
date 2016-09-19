@@ -1,5 +1,6 @@
-require 'enrollment'
-require ''
+require_relative 'enrollment_repository'
+require_relative 'district_repository'
+
 
 
 
@@ -33,4 +34,6 @@ class HeadcountAnalyst
 
 
 
+
+end
 end
