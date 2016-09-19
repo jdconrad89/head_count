@@ -2,38 +2,21 @@ require_relative 'enrollment_repository'
 require_relative 'district_repository'
 
 
-
-
 class HeadcountAnalyst
-
-
-  def kindergaten_participation_rate_variation(input_1, input_2)
-
-    year_average_1 = input_1.values.inject do |sum,num|
-      (sum + num).to_f / input_1.size
-    end
-
-    district_average_1 = (year_average * 1000).floor / 1000.0
-
-    year_average_2 = input_2.values.inject do |num, sum|
-      (sum + num).to_f/ input_1.size
-
-      district_2 = (year_average_2 * 1000).floor / 1000.0
-
-      variation = (district_1 / disctrict_2).floor / 1000.0
+attr_reader :district
+  def initialize(input)
+    @district = input
   end
 
-  # def kindergaten_participation_rate_variation_trend (input_1, input_2)
+  def kindergarten_participation_rate_variation(input_1, input_2)
+    district1 = district.find_by_name(input_1)
+    district2 = district.find_by_name(input_2.values.to_s.gsub(/\d|\W/, "").downcase.capitalize)
 
+    district1_values = district1.enrollment.kindergarten_participation.values
+    district2_values = district2.enrollment.kindergarten_participation.values
+    district1_average = district1_values.inject {|sum, num| sum + num} / district1_values.length
+    district2_average = district2_values.inject {|sum, num| sum + num} / district2_values.length
 
-
-
-
-
-
-
-
-
-
-end
+    ((district1_average/ district2_average) * 1000).floor / 1000.0
+  end
 end
