@@ -3,6 +3,7 @@ require_relative '../lib/enrollment.rb'
 
 class EnrollmentTest < Minitest::Test
 
+
   def test_enrollment_holds_enrollment_data_for_single_district
     skip
     e = Enrollment.new({:name => "ACADEMY 20", :kindergarten_participation => {2010 => 0.3915, 2011 => 0.35356, 2012 => 0.2677}})
@@ -35,10 +36,10 @@ class EnrollmentTest < Minitest::Test
 
   name = "GUNNISON WATERSHED RE1J"
   enrollment = er.find_by_name(name)
-  # binding.pry
   assert_equal name, enrollment.name
   assert enrollment.is_a?(Enrollment)
   assert_in_delta 0.144, enrollment.kindergarten_participation_in_year(2004), 0.005
+
   end
 
 end
