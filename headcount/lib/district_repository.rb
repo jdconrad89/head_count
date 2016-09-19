@@ -15,13 +15,12 @@ class DistrictRepository
       if find_by_name(row[:location]).nil?
         @districts[row[:location]] = District.new({name: row[:location] })
       end
-      # binding.pry
     end
-   end
+  end
 
-   def find_by_name(input)
-     @districts[input]
-   end
+  def find_by_name(input)
+    @districts[input]
+  end
   #
   def find_all_matching(input)
     @districts.select do |name, district|

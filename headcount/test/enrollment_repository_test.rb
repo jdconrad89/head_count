@@ -12,7 +12,7 @@ class EnrollmentRepositoryTest < Minitest::Test
   end
 
   def test_dr_can_load_data
-
+skip
   er = EnrollmentRepository.new
       er.load_data({
       :enrollment => {
@@ -25,7 +25,7 @@ class EnrollmentRepositoryTest < Minitest::Test
   end
 
   def test_it_can_find_a_district_by_name
-skip
+
     er = EnrollmentRepository.new
       er.load_data({
       :enrollment => {
@@ -33,6 +33,7 @@ skip
       }
     })
     enrollment = er.find_by_name("ACADEMY 20")
+    # binding.pry
     assert_equal "ACADEMY 20", enrollment.name
   end
 
