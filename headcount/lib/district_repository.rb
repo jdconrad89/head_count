@@ -12,6 +12,7 @@ class DistrictRepository
   end
 
   def load_data(file_hash)
+    binding.pry
     filename = file_hash[:enrollment][:kindergarten]
     contents = CSV.open filename, headers: true, header_converters: :symbol
     contents.each do |row|
