@@ -16,7 +16,7 @@ class DistrictRepository
     contents = CSV.open filename, headers: true, header_converters: :symbol
     contents.each do |row|
       if find_by_name(row[:location]).nil?
-        @districts[row[:location]] = District.new({name: row[:location] })
+        @districts[row[:location].upcase] = District.new({name: row[:location] })
       end
     end
     @enrollments.load_data(file_hash)

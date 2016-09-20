@@ -14,9 +14,9 @@ class EnrollmentRepository
     contents = CSV.open filename, headers: true, header_converters: :symbol
     contents.each do |row|
       if find_by_name(row[:location]).nil?
-        @enrollments[row[:location]] = Enrollment.new({name: row[:location], kindergarten_participation: {}, high_school_graduation: {}})
+        @enrollments[row[:location].upcase] = Enrollment.new({name: row[:location], kindergarten_participation: {}, high_school_graduation: {}})
       end
-      find_by_name(row[:location]).send(symbol.to_s)[row[:timeframe].to_i] = row[:data].to_f
+      find_by_name(row[:location].upcase).send(symbol.to_s)[row[:timeframe].to_i] = row[:data].to_f
 
     end
   end
@@ -27,7 +27,8 @@ class EnrollmentRepository
   end
 
   def find_by_name(input)
-    @enrollments[input]
+    clean = input.upcase
+    @enrollments[clean]
 
   end
 
