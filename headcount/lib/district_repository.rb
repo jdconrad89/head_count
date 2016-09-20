@@ -37,6 +37,6 @@ class DistrictRepository
   def find_all_matching(input)
     @districts.select do |name, district|
       district if name.include?(input)
-    end.values
+    end.keys.to_s.gsub(/[^0-9a-z ]/i, '').strip
   end
 end

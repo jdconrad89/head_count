@@ -49,7 +49,6 @@ class DistrictRepositoryTest < Minitest::Test
         :kindergarten => "./data/Kindergartners in full-day program.csv"
       }
     })
-    dr.find_all_matching("ACA")
 
     assert_equal "ACADEMY 20", dr.find_all_matching("ACA")
   end

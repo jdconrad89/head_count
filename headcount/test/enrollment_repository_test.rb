@@ -4,7 +4,7 @@ require_relative '../lib/enrollment_repository.rb'
 class EnrollmentRepositoryTest < Minitest::Test
 
   def test_enrollment_repository_exists
-    skip
+    
     er = EnrollmentRepository.new
 
 
@@ -12,7 +12,7 @@ class EnrollmentRepositoryTest < Minitest::Test
   end
 
   def test_dr_can_load_data
-skip
+
   er = EnrollmentRepository.new
       er.load_data({
       :enrollment => {
