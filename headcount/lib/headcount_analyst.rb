@@ -3,7 +3,7 @@ require_relative 'district_repository'
 
 
 class HeadcountAnalyst
-include Truncate
+include Equations
 attr_reader :district
   def initialize(input)
     @district = input

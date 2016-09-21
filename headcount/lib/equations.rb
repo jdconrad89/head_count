@@ -1,4 +1,4 @@
-module Truncate
+module Equations
   def clean(input)
     @zippy = []
     if input == nil
@@ -11,5 +11,9 @@ module Truncate
       end
 
     end
+  end
+
+  def average(input)
+    (input.inject(:+)) / input.length
   end
 end

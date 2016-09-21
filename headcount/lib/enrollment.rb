@@ -1,7 +1,7 @@
 require_relative "enrollment_repository"
-require_relative "truncate"
+require_relative "equations"
 class Enrollment
-include Truncate
+include Equations
 attr_reader :name, :year
 attr_accessor :kindergarten_participation, :high_school_graduation
 
@@ -11,10 +11,12 @@ attr_accessor :kindergarten_participation, :high_school_graduation
     @year = data_hash[:year]
     @high_school_graduation = data_hash[:high_school_graduation]
     @enrollments_by_name = []
+    binding.pry
   end
 
   def kindergarten
     kindergarten_participation
+    binding.pry
   end
 
   def kindergarten_participation_by_year

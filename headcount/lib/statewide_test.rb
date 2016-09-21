@@ -3,13 +3,15 @@ require_relative "truncate"
 
 
 class StatewideTest
-include Truncate
+include Equations
 
   def initialize(file_hash)
     @name = file_hash[:name]
+    
   end
 
   def proficient_by_grade(grade)
+
   end
 
 
