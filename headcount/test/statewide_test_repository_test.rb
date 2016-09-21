@@ -4,9 +4,7 @@ require_relative '../lib/statewide_test_repository'
 class StatewideTestRepositoryTest < Minitest::Test
 
   def test_statewide_testing_repository_basics
-    # dr = DistrictRepository.new
     str = StatewideTestRepository.new
-    # binding.pry
     str.load_data({
       :statewide_testing => {
         :third_grade => "./data/3rd grade students scoring proficient or above on the CSAP_TCAP.csv",
@@ -22,4 +20,10 @@ class StatewideTestRepositoryTest < Minitest::Test
       assert str.find_by_name("ACADEMY 20")
       assert str.find_by_name("GUNNISON WATERSHED RE1J")
     end
+
+    # def test_it_can_return_test_proficiency_by_grade
+    #
+    #
+    #   assert_equal statewide_test.proficient_by_grade(3)
+    # end
 end

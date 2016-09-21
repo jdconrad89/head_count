@@ -16,8 +16,10 @@ class EnrollmentRepository
       if find_by_name(row[:location]).nil?
         @enrollments[row[:location].upcase] = Enrollment.new({name: row[:location], kindergarten_participation: {}, high_school_graduation: {}})
       end
-      find_by_name(row[:location].upcase).send(symbol.to_s)[row[:timeframe].to_i] = row[:data].to_f
+      binding.pry
 
+      find_by_name(row[:location].upcase).send(symbol.to_s)[row[:timeframe].to_i] = row[:data].to_f
+      binding.pry
     end
   end
   end
@@ -27,6 +29,7 @@ class EnrollmentRepository
   end
 
   def find_by_name(input)
+    binding.pry
     clean = input.upcase
     @enrollments[clean]
 

@@ -22,9 +22,11 @@ class DistrictRepository
     end
     @enrollments.load_data(file_hash)
     assign_matches
+    binding.pry
   end
 
   def assign_matches
+    binding.pry
     districts.each do |name, district|
       district.enrollment = enrollments.find_by_name(name)
     end

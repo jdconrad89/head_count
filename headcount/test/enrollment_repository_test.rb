@@ -12,7 +12,7 @@ class EnrollmentRepositoryTest < Minitest::Test
   end
 
   def test_dr_can_load_data
-
+skip
     er = EnrollmentRepository.new
     er.load_data({
       :enrollment => {

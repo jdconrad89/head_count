@@ -11,6 +11,7 @@ attr_accessor :kindergarten_participation, :high_school_graduation
     @year = data_hash[:year]
     @high_school_graduation = data_hash[:high_school_graduation]
     @enrollments_by_name = []
+    # binding.pry
   end
 
   def kindergarten
