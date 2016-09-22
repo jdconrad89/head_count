@@ -8,7 +8,6 @@ class EnrollmentRepository
   end
 
   def load_data(file_hash)
-    # binding.pry
     file_hash[:enrollment].each do |symbol , filename|
     # filename = file_hash[:enrollment][:kindergarten][:high_school_graduation]
     contents = CSV.open filename, headers: true, header_converters: :symbol

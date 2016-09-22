@@ -15,7 +15,8 @@ class EconomicProfileRepository
       contents = CSV.open filename, headers: true, header_converters: :symbol
       contents.each do |row|
         if find_by_name(row[:location]).nil?
-          @economic_profile[row[:location].upcase] = EconomicProfile.new({name: row[:location], median_household_income: {}})
+          @economic_profile[row[:location].upcase] = EconomicProfile.new({name: row[:location],
+            median_household_income: {}, free_or_reduced_lunch: {}, title_i: {} })
         end
         find_by_name(row[:location].upcase)
       end

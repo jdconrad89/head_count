@@ -12,7 +12,6 @@ class DistrictRepository
   end
 
   def load_data(file_hash)
-    binding.pry
     filename = file_hash[:enrollment][:kindergarten]
     contents = CSV.open filename, headers: true, header_converters: :symbol
     contents.each do |row|
@@ -38,6 +37,6 @@ class DistrictRepository
   def find_all_matching(input)
     @districts.select do |name, district|
       district if name.include?(input)
-    end.values
+    end.keys[0]
   end
 end

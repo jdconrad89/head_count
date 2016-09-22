@@ -6,7 +6,6 @@ class StatewideTestRepositoryTest < Minitest::Test
   def test_statewide_testing_repository_basics
     # dr = DistrictRepository.new
     str = StatewideTestRepository.new
-    # binding.pry
     str.load_data({
       :statewide_testing => {
         :third_grade => "./data/3rd grade students scoring proficient or above on the CSAP_TCAP.csv",

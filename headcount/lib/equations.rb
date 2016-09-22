@@ -1,5 +1,8 @@
+require_relative 'errors'
+
 module Equations
   def clean(input)
+    binding.pry
     @zippy = []
     if input == nil
       nil
@@ -7,7 +10,7 @@ module Equations
       (input * 1000).floor / 1000.0
     else
       input.each do |num|
-        @zippy << (num[1] * 1000).floor / 1000.0
+        (num * 1000).floor / 1000.0
       end
 
     end
@@ -16,4 +19,10 @@ module Equations
   def average(input)
     (input.inject(:+)) / input.length
   end
+
+  def error?(condition)
+    raise UnknownDataError unless condition
+  end
+
+
 end

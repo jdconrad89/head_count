@@ -11,12 +11,10 @@ attr_accessor :kindergarten_participation, :high_school_graduation
     @year = data_hash[:year]
     @high_school_graduation = data_hash[:high_school_graduation]
     @enrollments_by_name = []
-    binding.pry
   end
 
   def kindergarten
     kindergarten_participation
-    binding.pry
   end
 
   def kindergarten_participation_by_year
@@ -35,7 +33,7 @@ attr_accessor :kindergarten_participation, :high_school_graduation
   end
 
   def graduation_rate_by_year
-    clean(high_school_graduation)
+    clean(high_school_graduation.values)
     high_school_graduation.keys.zip(@zippy).to_h
   end
 

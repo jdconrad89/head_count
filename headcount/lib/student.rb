@@ -6,7 +6,7 @@
 #
 #
 #   def initialize(row)
-#     # binding.pry
+#    
 #     nil.to_s
 #     @location = row[:location]
 #     @score = row[:score]

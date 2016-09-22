@@ -5,6 +5,7 @@ class EnrollmentTest < Minitest::Test
 
 
   def test_enrollment_holds_enrollment_data_for_single_district
+    skip
 
     e = Enrollment.new({:name => "ACADEMY 20", :kindergarten_participation => {2010 => 0.3915, 2011 => 0.35356, 2012 => 0.2677}})
 
@@ -77,5 +78,5 @@ class EnrollmentTest < Minitest::Test
         enrollment = er.find_by_name("ACADEMY 20")
         assert_equal enrollment.graduation_rate_in_year(2010), 0.895
     end
-    
+
 end

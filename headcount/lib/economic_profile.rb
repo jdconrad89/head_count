@@ -2,26 +2,18 @@ require_relative "economic_profile_repository"
 require_relative "equations"
 
 
+
 class EconomicProfile
 include Equations
-attr_reader :median_income
+attr_reader :median_income, :childhood_poverty, :free_or_reduced_priced_lunch, :title_i
 
   def initialize(file_hash)
     @name = file_hash[:name]
     @median_income = file_hash[:median_household_income]
-
+    @childhood_poverty = file_hash[:children_in_poverty]
+    @free_or_reduced_priced_lunch = file_hash[:free_or_reduced_price_lunch]
+    @title_i = file_hash[:title_i]
   end
-
-  # def year_given_in_range(year)
-  #   median_range = median_income.keys.map do |key|
-  #     (key[0]..key[1])
-  #   end
-  #
-  #   median_range.each do |range|
-  #     range.member?(year)
-  #       median_household_income_in_year if true
-  #     end
-  # end
 
 
   def median_household_income_in_year(year)
@@ -30,24 +22,27 @@ attr_reader :median_income
     end.compact
 
     average(incomes)
-
-
-
-
-
-
-
-    # binding.pry
-#     median_range = median_income.keys.map do |key|
-#       (key[0]..key[1])
-#     end
-# # binding.pry
-#     median_range.each do |range|
-#       range.member?(year)
-#       binding.pry
-#         average(median_range) if true
-#       end
   end
 
+  def median_household_income_average
+    average(median_income.values)
+
+  end
+
+  def children_in_poverty_in_year(year)
+    clean(childhood_poverty.values[0])
+  end
+
+  def free_or_reduced_price_lunch_percentage_in_year(year)
+    free_or_reduced_priced_lunch.dig(year, :percentage)
+  end
+
+  def free_or_reduced_price_lunch_number_in_year(year)
+    free_or_reduced_priced_lunch.dig(year, :total)
+  end
+
+  def title_i_in_year(year)
+    clean(title_i.values[0])
+  end
 
 end

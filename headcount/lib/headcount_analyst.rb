@@ -45,7 +45,7 @@ attr_reader :district
     district2_average = district2_values.inject(:+) / district2_values.length
 
     ((district1_average/ district2_average) * 1000).floor / 1000.0
-    # binding.pry
+
   end
 
   def high_school_graduation_rate_variation_trend(input_1, input_2)
@@ -64,14 +64,13 @@ attr_reader :district
   def kindergarten_participation_against_high_school_graduation(district)
     kinder = kindergarten_participation_rate_variation(district, against: "COLORADO")
     highschool = high_school_graduation_rate_variation(district, against: "COLORADO")
-    # binding.pry
+
     clean(kinder / highschool)
   end
 
   def kindergarten_participation_correlates_with_high_school_graduation(input)
     if input[:for] == "STATEWIDE"
       kindergarten_participation_correlates_with_high_school_graduation_one("COLORADO").between?(0.7, 1)
-      binding.pry
     elsif input[:across]
       districts_avg = input[:across].map do |district|
         kindergarten_participation_against_high_school_graduation(district)
@@ -105,7 +104,7 @@ attr_reader :district
     def kindergarten_participation_correlates_with_high_school_graduation_one(input)
         kinder = kindergarten_participation_rate_variation_one_input(input)
         highschool = high_school_graduation_rate_variation_one_input(input)
-        # binding.pry
+    
         clean(kinder / highschool)
       end
 end

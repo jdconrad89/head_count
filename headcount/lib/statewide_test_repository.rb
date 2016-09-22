@@ -11,20 +11,20 @@ class StatewideTestRepository
     file_hash[:statewide_testing].each do |symbol , filename|
     contents = CSV.open filename, headers: true, header_converters: :symbol
     contents.each do |row|
-      binding.pry
+  
       if find_by_name(row[:location]).nil?
         @test_results[row[:location].upcase] = StatewideTest.new({name: row[:location]})
       end
-      # binding.pry
+      
       find_by_name(row[:location].upcase)
     end
-    # binding.pry
+    
   end
     # @test_results.load_data(file_hash)
   end
 
     def find_by_name(input)
-      # binding.pry
+      
       @test_results[input]
     end
 
